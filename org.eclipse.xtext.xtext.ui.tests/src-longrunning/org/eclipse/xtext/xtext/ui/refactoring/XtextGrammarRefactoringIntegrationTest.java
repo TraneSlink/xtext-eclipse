@@ -303,6 +303,7 @@ public class XtextGrammarRefactoringIntegrationTest extends AbstractLinkedEditin
 		editor.getDocument().readOnly(new IUnitOfWork<Boolean, XtextResource>() {
 			@Override
 			public Boolean exec(XtextResource state) throws Exception {
+				System.err.println(state.getParseResult().getRootNode().getText());
 				AbstractRule rule = ((RuleCall) ((Assignment) ((ParserRule) state.getEObject(modelParserRuleUri
 						.fragment())).getAlternatives()).getTerminal()).getRule();
 				assertFalse(rule.eIsProxy());
